@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yum & Fit | Comida Saludable & Deliciosa</title>
+  
+  <!-- SEO & Open Graph Meta Tags -->
+  <meta name="description" content="Yum & Fit: Restaurante de comida saludable, fitness y gourmet. Bowls proteicos, ensaladas frescas y opciones keto preparadas al momento. Pedidos directos por WhatsApp al 098 184 0168.">
+  <meta name="keywords" content="comida saludable, fitness food, ensaladas gourmet, bowls de proteina, keto, Yum and Fit, comida sana">
+  <meta property="og:title" content="Yum & Fit | Healthy & Delicious">
+  <meta property="og:description" content="Comida real que nutre tu cuerpo y deleita tu día. Descubre nuestros bowls gourmet y ensaladas frescas.">
+  <meta property="og:image" content="Assets/logo.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="Assets/logo.jpg">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN with customized brand configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              forest: '#1E3B2B',
+              forestDark: '#14271D',
+              sage: '#3D6A4E',
+              sageLight: '#E9F2EC',
+              gold: '#C99738',
+              goldLight: '#F4E7CE',
+              cream: '#FAF8F5',
+              dark: '#19241C',
+              muted: '#54655B'
+            }
+          },
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#FAF8F5] text-[#19241C] antialiased selection:bg-[#E9F2EC] selection:text-[#1E3B2B]">
+
+  <!-- =========================================================================
+       1. NAVBAR FLOTANTE (GLASSMORPHISM)
+       ========================================================================= -->
+  <header id="main-navbar" class="glass-nav fixed top-0 left-0 w-full z-40 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo de la marca -->
+      <a href="#hero" class="flex items-center gap-3.5 group" aria-label="Ir al inicio de Yum & Fit">
+        <div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#C99738] shadow-sm group-hover:scale-105 transition-transform duration-300">
+          <img src="Assets/logo.jpg" alt="Logo Yum & Fit Bulldog Chef" class="w-full h-full object-cover">
+        </div>
+        <div class="flex flex-col">
+          <span class="font-heading font-extrabold text-2xl tracking-tight text-[#1E3B2B] leading-none">Yum &amp; Fit</span>
+          <span class="text-[11px] font-semibold tracking-wider text-[#C99738] uppercase">Healthy &amp; Delicious</span>
+        </div>
+      </a>
+
+      <!-- Navegación Desktop -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-[#54655B]" aria-label="Navegación principal">
+        <a href="#hero" class="hover:text-[#1E3B2B] transition-colors py-1">Inicio</a>
+        <a href="#menu" class="hover:text-[#1E3B2B] transition-colors py-1">Menú</a>
+        <a href="#cocina" class="hover:text-[#1E3B2B] transition-colors py-1">Nuestra Cocina</a>
+        <a href="#valores" class="hover:text-[#1E3B2B] transition-colors py-1">Por Qué Elegirnos</a>
+        <a href="#contacto" class="hover:text-[#1E3B2B] transition-colors py-1">Contacto</a>
+      </nav>
+
+      <!-- Botón Pedido WhatsApp Desktop -->
+      <div class="hidden sm:flex items-center gap-4">
+        <a 
+          href="https://wa.me/593981840168?text=Hola%20Yum%20%26%20Fit!%20%F0%9F%A5%91%20Quisiera%20hacer%20un%20pedido%20o%20conocer%20el%20men%C3%BA%20del%20d%C3%ADa." 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn-gold inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm shadow-md transition-all duration-300"
+        >
+          <svg class="w-4 h-4 text-[#19241C]" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.451.744.969 1.205.666.594 1.228.778 1.402.865.173.086.275.072.376-.044.101-.116.433-.506.549-.679.116-.173.231-.144.39-.086.159.058 1.011.477 1.184.564.173.086.289.13.332.202.043.072.043.419-.101.824z"/></svg>
+          <span>Pedir por WhatsApp</span>
+        </a>
+      </div>
+
+      <!-- Botón Móvil Hamburguesa -->
+      <button 
+        id="mobile-menu-toggle" 
+        type="button" 
+        class="md:hidden p-2 rounded-xl text-[#1E3B2B] hover:bg-emerald-50 focus:outline-none" 
+        aria-label="Abrir menú de navegación"
+      >
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Drawer Móvil -->
+  <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="mobile-drawer" class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-6">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-emerald-900/10">
+        <div class="flex items-center gap-3">
+          <img src="Assets/logo.jpg" alt="Logo" class="w-10 h-10 rounded-full border border-[#C99738]">
+          <span class="font-heading font-extrabold text-xl text-[#1E3B2B]">Yum &amp; Fit</span>
+        </div>
+        <button id="mobile-drawer-close" class="p-2 text-[#54655B] hover:text-[#1E3B2B]" aria-label="Cerrar menú">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <nav class="flex flex-col gap-4 mt-8 font-semibold text-lg text-[#19241C]">
+        <a href="#hero" class="mobile-nav-link hover:text-[#1E3B2B] py-2 border-b border-gray-100">Inicio</a>
+        <a href="#menu" class="mobile-nav-link hover:text-[#1E3B2B] py-2 border-b border-gray-100">Menú &amp; Platos</a>
+        <a href="#cocina" class="mobile-nav-link hover:text-[#1E3B2B] py-2 border-b border-gray-100">Nuestra Cocina</a>
+        <a href="#valores" class="mobile-nav-link hover:text-[#1E3B2B] py-2 border-b border-gray-100">Por Qué Elegirnos</a>
+        <a href="#contacto" class="mobile-nav-link hover:text-[#1E3B2B] py-2 border-b border-gray-100">Contacto &amp; Horarios</a>
+      </nav>
+    </div>
+
+    <div class="pt-6 border-t border-emerald-900/10 flex flex-col gap-3">
+      <div class="text-xs text-[#54655B] text-center">
+        Pedidos directos y delivery al <br><strong class="text-[#1E3B2B] text-sm">098 184 0168</strong>
+      </div>
+      <a 
+        href="https://wa.me/593981840168?text=Hola%20Yum%20%26%20Fit!%20Deseo%20hacer%20un%20pedido." 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn-gold w-full py-3.5 rounded-2xl flex items-center justify-center gap-2 text-center text-sm shadow-md"
+      >
+        <span>Pedir por WhatsApp</span>
+      </a>
+    </div>
+  </aside>
+
+  <main>
+    <!-- =========================================================================
+         2. HERO SECTION
+         ========================================================================= -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+      <!-- Decoración de fondo suave -->
+      <div class="absolute top-20 right-10 w-96 h-96 bg-emerald-100/60 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+      <div class="absolute bottom-10 left-10 w-80 h-80 bg-amber-100/50 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Contenido Hero (Izquierda) -->
+          <div class="lg:col-span-7 flex flex-col items-start">
+            
+            <!-- Badge superior -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E9F2EC] text-[#1E3B2B] text-xs sm:text-sm font-bold mb-6 border border-emerald-800/10 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>100% Ingredientes Frescos • Cero Ultraprocesados</span>
+            </div>
+
+            <!-- Titular Principal -->
+            <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#19241C] tracking-tight leading-[1.15] mb-6">
+              Comida real que nutre tu cuerpo y <span class="text-[#1E3B2B] underline decoration-[#C99738]/60 decoration-wavy decoration-2">deleita tu día</span>.
+            </h1>
+
+            <!-- Subtítulo -->
+            <p class="text-lg sm:text-xl text-[#54655B] leading-relaxed mb-8 max-w-2xl font-normal">
+              Descubre nuestros bowls gourmet, ensaladas frescas y proteínas magras preparadas al momento. El equilibrio perfecto de macronutrientes sin sacrificar un solo gramo de sabor.
+            </p>
+
+            <!-- Botones de Acción Hero -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-12">
+              <a 
+                href="#menu" 
+                class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#1E3B2B] hover:bg-[#14271D] text-white font-bold text-base shadow-xl shadow-emerald-950/15 hover:shadow-2xl transition-all duration-300"
+              >
+                <span>Explorar Menú</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </a>
+
+              <a 
+                href="#cocina" 
+                class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full bg-white hover:bg-emerald-50 text-[#1E3B2B] font-bold text-base border border-emerald-900/10 shadow-sm transition-all duration-300"
+              >
+                <div class="w-8 h-8 rounded-full bg-[#E9F2EC] flex items-center justify-center text-[#1E3B2B]">
+                  <svg class="w-4 h-4 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <span>Ver Preparación</span>
+              </a>
+            </div>
+
+            <!-- Métricas / Social Proof minimalista -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-emerald-900/10 w-full">
+              <div>
+                <span class="block font-heading text-2xl sm:text-3xl font-extrabold text-[#1E3B2B]">0%</span>
+                <span class="text-xs text-[#54655B] font-medium">Conservantes</span>
+              </div>
+              <div>
+                <span class="block font-heading text-2xl sm:text-3xl font-extrabold text-[#1E3B2B]">100%</span>
+                <span class="text-xs text-[#54655B] font-medium">Fresco &amp; Local</span>
+              </div>
+              <div>
+                <span class="block font-heading text-2xl sm:text-3xl font-extrabold text-[#1E3B2B]">+40g</span>
+                <span class="text-xs text-[#54655B] font-medium">Proteína Limpia</span>
+              </div>
+              <div>
+                <span class="block font-heading text-2xl sm:text-3xl font-extrabold text-[#1E3B2B]">35 min</span>
+                <span class="text-xs text-[#54655B] font-medium">Entrega Promedio</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Composición Visual Hero (Derecha) -->
+          <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
+            
+            <div class="relative w-full max-w-md">
+              
+              <!-- Tarjeta Principal del Plato Estrella -->
+              <div class="bg-white rounded-3xl p-5 shadow-2xl border border-emerald-900/10 relative z-10 animate-float">
+                <div class="relative h-64 sm:h-72 rounded-2xl overflow-hidden mb-4 bg-gray-100">
+                  <img 
+                    src="Assets/images/power-steak-bowl.jpg" 
+                    alt="Power Steak & Avocado Bowl" 
+                    class="w-full h-full object-cover"
+                  >
+                  <div class="absolute top-3 left-3 bg-[#1E3B2B]/90 backdrop-blur-md text-white px-3.5 py-1 rounded-full text-xs font-bold">
+                    ★ Plato Más Pedido
+                  </div>
+                  <div class="absolute bottom-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#1E3B2B] shadow-md">
+                    540 kcal • 42g Proteína
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="font-heading font-bold text-xl text-[#19241C]">Power Steak Bowl</h3>
+                  <span class="text-xl font-extrabold font-heading text-[#1E3B2B]">$8.99</span>
+                </div>
+                <p class="text-xs text-[#54655B] mb-4">Lomo fino sellado, aguacate hass fresco, quinoa y aderezo de autor.</p>
+
+                <a 
+                  href="https://wa.me/593981840168?text=Hola%20Yum%20%26%20Fit!%20%F0%9F%A5%91%20Quiero%20pedir%20el%20Power%20Steak%20%26%20Avocado%20Bowl%20(%248.99)." 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="btn-gold w-full py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-md"
+                >
+                  <span>Pedir Plato Estrella</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+              </div>
+
+              <!-- Badge Flotante con la Bulldog Chef -->
+              <div class="absolute -top-6 -left-6 z-20 bg-white p-2 rounded-2xl shadow-xl border border-emerald-900/10 flex items-center gap-3">
+                <img src="Assets/logo.jpg" alt="Chef Bulldog Mascot" class="w-12 h-12 rounded-xl object-cover border border-[#C99738]">
+                <div class="pr-3">
+                  <span class="block text-xs font-bold text-[#1E3B2B]">Sello de la Chef</span>
+                  <span class="text-[11px] text-[#54655B]">Comida con Amor</span>
+                </div>
+              </div>
+
+              <!-- Badge Flotante de Rating -->
+              <div class="absolute -bottom-6 -right-6 z-20 bg-white px-4 py-3 rounded-2xl shadow-xl border border-emerald-900/10 flex items-center gap-2">
+                <div class="w-9 h-9 rounded-full bg-amber-50 flex items-center justify-center text-[#C99738]">
+                  ★
+                </div>
+                <div>
+                  <span class="block text-xs font-extrabold text-[#19241C]">4.9 / 5.0</span>
+                  <span class="text-[10px] text-[#54655B]">+450 clientes felices</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         3. SECCIÓN MENÚ INTERACTIVO
+         ========================================================================= -->
+    <section id="menu" class="py-24 bg-white/70 border-t border-b border-emerald-900/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Encabezado de la Sección -->
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#C99738] block mb-2">Carta Nutricional</span>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#19241C] tracking-tight mb-4">
+            Menú Saludable Hecho al Instante
+          </h2>
+          <p class="text-[#54655B] text-base sm:text-lg leading-relaxed">
+            Platos formulados con macros balanceados, ingredientes limpios y cocinados al momento para que disfrutes cuidarte.
+          </p>
+        </div>
+
+        <!-- Pestañas de Filtro de Categoría -->
+        <div class="flex items-center justify-start sm:justify-center gap-2 sm:gap-3 overflow-x-auto pb-4 mb-12 no-scrollbar" id="category-tabs-container">
+          <!-- Generado dinámicamente desde js/main.js -->
+        </div>
+
+        <!-- Grid de Tarjetas de Platillo -->
+        <div id="menu-dishes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Tarjetas renderizadas dinámicamente con JavaScript -->
+        </div>
+
+        <!-- Nota al pie del menú -->
+        <div class="mt-16 text-center bg-[#E9F2EC] rounded-2xl p-6 max-w-3xl mx-auto border border-emerald-800/10">
+          <p class="text-sm text-[#1E3B2B] font-semibold">
+            🥑 ¿Tienes requerimientos especiales o alergias? 
+            <a 
+              href="https://wa.me/593981840168?text=Hola%20Yum%20%26%20Fit!%20Tengo%20un%20requerimiento%20diet%C3%A9tico%20especial." 
+              target="_blank" 
+              class="underline font-bold text-[#C99738] hover:text-[#1E3B2B] transition-colors ml-1"
+            >
+              Escríbenos por WhatsApp y adaptamos tu plato.
+            </a>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. SECCIÓN NUESTRA COCINA (VIDEO SHOWCASE)
+         ========================================================================= -->
+    <section id="cocina" class="py-24 bg-[#1E3B2B] text-white relative overflow-hidden">
+      
+      <!-- Luces de fondo -->
+      <div class="absolute -top-32 -left-32 w-96 h-96 bg-emerald-700/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Narrativa y Texto -->
+          <div class="lg:col-span-5">
+            <span class="text-xs font-bold tracking-widest uppercase text-[#C99738] block mb-2">Transparencia Culinaria</span>
+            <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
+              De la Cocina a Tu Mesa: Pasión por lo Fresco
+            </h2>
+            <p class="text-emerald-100/80 text-base sm:text-lg leading-relaxed mb-6">
+              En Yum &amp; Fit no usamos salsas prefabricadas ni ingredientes congelados. Cada aguacate es inspeccionado en su punto justo de madurez y cada corte de carne se sella a la orden para conservar sus jugos y nutrientes.
+            </p>
+
+            <ul class="space-y-4 mb-8 text-sm sm:text-base text-emerald-50">
+              <li class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#3D6A4E] flex items-center justify-center shrink-0 text-[#C99738]">
+                  ✓
+                </div>
+                <span><strong>Aguacates Hass seleccionados a mano</strong> con grasas cardiosaludables.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#3D6A4E] flex items-center justify-center shrink-0 text-[#C99738]">
+                  ✓
+                </div>
+                <span><strong>Quinoa tricolor andina</strong> y vegetales de agricultores locales.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#3D6A4E] flex items-center justify-center shrink-0 text-[#C99738]">
+                  ✓
+                </div>
+                <span><strong>Vinagretas emulsionadas artesanalmente</strong> con aceite de oliva extra virgen.</span>
+              </li>
+            </ul>
+
+            <div class="flex items-center gap-4">
+              <a 
+                href="#menu" 
+                class="btn-gold px-6 py-3.5 rounded-full text-sm font-bold shadow-lg transition-transform hover:scale-105"
+              >
+                Elegir Mi Plato Ahora
+              </a>
+            </div>
+          </div>
+
+          <!-- Reproductor de Video Showcase -->
+          <div class="lg:col-span-7">
+            <div class="video-wrapper relative w-full aspect-video border-2 border-emerald-800/30">
+              
+              <video 
+                id="promo-video" 
+                playsinline 
+                preload="metadata" 
+                poster="Assets/images/video-poster.jpg" 
+                class="w-full h-full object-cover"
+              >
+                <source src="Assets/gemini_generated_video_27d573df.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video HTML5.
+              </video>
+
+              <!-- Overlay interactivo inicial de Play -->
+              <div id="video-play-overlay" class="video-play-overlay">
+                <div class="text-center flex flex-col items-center gap-4">
+                  <button id="video-overlay-btn" type="button" class="video-play-btn" aria-label="Reproducir video promocional">
+                    <svg class="w-8 h-8 translate-x-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </button>
+                  <span class="text-white text-sm font-semibold tracking-wide bg-black/40 px-4 py-1.5 rounded-full backdrop-blur-sm">
+                    Ver Video de Cocina (10s)
+                  </span>
+                </div>
+              </div>
+
+              <!-- Barra de Controles Inferior -->
+              <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-between z-20">
+                <div class="flex items-center gap-3">
+                  <!-- Botón Play/Pausa -->
+                  <button id="video-toggle-play" class="p-2 text-white hover:text-[#C99738] transition-colors" aria-label="Pausar o Reproducir">
+                    <svg id="video-play-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <svg id="video-pause-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  </button>
+
+                  <!-- Botón Silenciar/Audio -->
+                  <button id="video-toggle-mute" class="p-2 text-white hover:text-[#C99738] transition-colors" aria-label="Activar o desactivar sonido">
+                    <svg id="video-unmute-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                    <svg id="video-mute-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                  </button>
+                </div>
+
+                <!-- Botón Pantalla Completa -->
+                <button id="video-toggle-fullscreen" class="p-2 text-white hover:text-[#C99738] transition-colors" aria-label="Pantalla completa">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. SECCIÓN POR QUÉ YUM & FIT (BENTO GRID)
+         ========================================================================= -->
+    <section id="valores" class="py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs sm:text-sm font-bold tracking-widest uppercase text-[#C99738] block mb-2">Nuestros Pilares</span>
+          <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#19241C] tracking-tight mb-4">
+            Por Qué Elegir Yum &amp; Fit
+          </h2>
+          <p class="text-[#54655B] text-base sm:text-lg">
+            No creemos en dietas restrictivas ni platos sin sabor. Diseñamos experiencias culinarias conscientes.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Pilar 1 -->
+          <div class="bg-white rounded-3xl p-8 border border-emerald-900/5 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-[#E9F2EC] text-[#1E3B2B] flex items-center justify-center mb-6">
+                <svg class="w-8 h-8 text-[#C99738]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              </div>
+              <h3 class="font-heading font-bold text-2xl text-[#19241C] mb-3">Sabor Gourmet Real</h3>
+              <p class="text-[#54655B] text-sm leading-relaxed">
+                Olvídate de la comida saludable aburrida. Nuestras recetas combinan texturas crujientes, marinados aromáticos y vinagretas equilibradas que despiertan tu paladar.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-emerald-900/5 text-xs font-bold text-[#1E3B2B] flex items-center gap-1.5">
+              <span>Recetas creadas por expertos</span> →
+            </div>
+          </div>
+
+          <!-- Pilar 2 -->
+          <div class="bg-white rounded-3xl p-8 border border-emerald-900/5 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-[#E9F2EC] text-[#1E3B2B] flex items-center justify-center mb-6">
+                <svg class="w-8 h-8 text-[#1E3B2B]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <h3 class="font-heading font-bold text-2xl text-[#19241C] mb-3">Ingredientes Rigurosos</h3>
+              <p class="text-[#54655B] text-sm leading-relaxed">
+                Cada proteína magra es certificada y libre de rellenos. Vegetales hidropónicos limpios y granos enteros sin conservantes que tu cuerpo asimila con vitalidad.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-emerald-900/5 text-xs font-bold text-[#1E3B2B] flex items-center gap-1.5">
+              <span>Trazabilidad y frescura diaria</span> →
+            </div>
+          </div>
+
+          <!-- Pilar 3 -->
+          <div class="bg-white rounded-3xl p-8 border border-emerald-900/5 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 rounded-2xl bg-[#E9F2EC] text-[#1E3B2B] flex items-center justify-center mb-6">
+                <svg class="w-8 h-8 text-[#C99738]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+              </div>
+              <h3 class="font-heading font-bold text-2xl text-[#19241C] mb-3">Empaques Eco-Friendly</h3>
+              <p class="text-[#54655B] text-sm leading-relaxed">
+                Cuidar tu salud también implica cuidar el planeta. Servimos nuestros bowls en envases de fibra de caña y materiales 100% biodegradables y compostables.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-emerald-900/5 text-xs font-bold text-[#1E3B2B] flex items-center gap-1.5">
+              <span>Cero plásticos de un solo uso</span> →
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         6. SECCIÓN CONTACTO, HORARIOS Y UBICACIÓN
+         ========================================================================= -->
+    <section id="contacto" class="py-24 bg-white/70 border-t border-emerald-900/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="bg-gradient-to-br from-[#1E3B2B] to-[#14271D] text-white rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            
+            <div class="lg:col-span-7">
+              <span class="text-xs font-bold tracking-widest uppercase text-[#C99738] block mb-2">Atención Directa &amp; Delivery</span>
+              <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
+                ¿Listo para comer delicioso y saludable hoy?
+              </h2>
+              <p class="text-emerald-100/80 text-base sm:text-lg mb-8 max-w-xl">
+                Escríbenos directamente o llámanos. Preparamos tu orden al instante para que la disfrutes en nuestro local, para llevar o a domicilio.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 text-sm">
+                <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10">
+                  <span class="text-xs text-[#C99738] font-bold uppercase tracking-wider block mb-1">Horario de Atención</span>
+                  <p class="font-semibold text-white">Lunes a Sábado: 10:00 - 21:00</p>
+                  <p class="text-emerald-200/70 text-xs mt-0.5">Domingos: 11:00 - 18:00</p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10">
+                  <span class="text-xs text-[#C99738] font-bold uppercase tracking-wider block mb-1">Teléfono Directo</span>
+                  <a href="tel:0981840168" class="font-bold text-xl text-white hover:text-[#C99738] transition-colors block">
+                    098 184 0168
+                  </a>
+                  <p class="text-emerald-200/70 text-xs mt-0.5">Llamadas y WhatsApp</p>
+                </div>
+              </div>
+
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <a 
+                  href="https://wa.me/593981840168?text=Hola%20Yum%20%26%20Fit!%20%F0%9F%A5%91%20Quiero%20hacer%20un%20pedido%20a%20domicilio." 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="btn-gold px-8 py-4 rounded-full text-base font-bold text-center shadow-lg hover:scale-105 transition-all flex items-center justify-center gap-2"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.451.744.969 1.205.666.594 1.228.778 1.402.865.173.086.275.072.376-.044.101-.116.433-.506.549-.679.116-.173.231-.144.39-.086.159.058 1.011.477 1.184.564.173.086.289.13.332.202.043.072.043.419-.101.824z"/></svg>
+                  <span>Pedir Inmediatamente</span>
+                </a>
+
+                <a 
+                  href="tel:0981840168" 
+                  class="px-8 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-base text-center border border-white/20 transition-all"
+                >
+                  Llamar: 098 184 0168
+                </a>
+              </div>
+
+            </div>
+
+            <!-- Avatar del Logo e Ilustración -->
+            <div class="lg:col-span-5 flex justify-center">
+              <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-[#C99738] shadow-2xl p-2 bg-white">
+                <img src="Assets/logo.jpg" alt="Chef Bulldog Mascot" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       7. FOOTER
+       ========================================================================= -->
+  <footer class="bg-white border-t border-emerald-900/10 py-12 text-[#54655B] text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-gray-100">
+        
+        <div class="flex items-center gap-3">
+          <img src="Assets/logo.jpg" alt="Logo" class="w-10 h-10 rounded-full border border-[#C99738]">
+          <div>
+            <span class="font-heading font-extrabold text-xl text-[#1E3B2B] block leading-none">Yum &amp; Fit</span>
+            <span class="text-[11px] text-[#C99738] font-bold">Healthy &amp; Delicious</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm font-medium">
+          <a href="#hero" class="hover:text-[#1E3B2B] transition-colors">Inicio</a>
+          <a href="#menu" class="hover:text-[#1E3B2B] transition-colors">Menú</a>
+          <a href="#cocina" class="hover:text-[#1E3B2B] transition-colors">Nuestra Cocina</a>
+          <a href="#valores" class="hover:text-[#1E3B2B] transition-colors">Valores</a>
+          <a href="#contacto" class="hover:text-[#1E3B2B] transition-colors">Contacto</a>
+        </div>
+
+        <div class="text-xs text-center md:text-right">
+          <span>Pedidos &amp; Consultas: </span>
+          <strong class="text-[#1E3B2B]">098 184 0168</strong>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+        <p>&copy; 2026 Yum &amp; Fit. Todos los derechos reservados.</p>
+        <p>Inspirado en comida real, fresca y deliciosa 🥑 🐶</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       8. BOTÓN FLOTANTE DE WHATSAPP (PERSISTENTE)
+       ========================================================================= -->
+  <a 
+    href="https://wa.me/593981840168?text=Hola%20Yum%20%26%20Fit!%20%F0%9F%A5%91%20Quisiera%20hacer%20un%20pedido." 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="whatsapp-floating group" 
+    aria-label="Abrir chat de WhatsApp para hacer un pedido"
+  >
+    <span class="relative flex h-3 w-3">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+    </span>
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.451.744.969 1.205.666.594 1.228.778 1.402.865.173.086.289.13.332.202.043.072.043.419-.101.824z"/></svg>
+    <span class="text-sm font-bold tracking-wide">Pide por WhatsApp</span>
+  </a>
+
+  <!-- =========================================================================
+       SCRIPTS
+       ========================================================================= -->
+  <script src="js/menu-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
